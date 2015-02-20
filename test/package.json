@@ -1,0 +1,10 @@
+{
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "dependencies": {
+    "babelify": "5.0.3"
+  }
+}
