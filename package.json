@@ -1,6 +1,6 @@
 {
   "name": "react-class-shifter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React component to create class-based animations",
   "main": "index.js",
   "scripts": {

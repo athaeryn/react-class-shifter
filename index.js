@@ -42,7 +42,7 @@ module.exports = React.createClass({
 
 
   componentWillUnmount() {
-    this.pause();
+    clearInterval(this.interval);
   },
 
 
