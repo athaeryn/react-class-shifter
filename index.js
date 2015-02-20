@@ -16,7 +16,6 @@ module.exports = React.createClass({
 
   getInitialState() {
     return {
-      interval: null,
       count: this.props.children.length,
       index: 0,
       paused: false
@@ -25,18 +24,19 @@ module.exports = React.createClass({
 
 
   play() {
+    // Ensure we only have one interval at a time.
+    this.pause();
     this.interval = setInterval(this.advance, this.props.speed);
-    this.setState({paused: false});
   },
 
 
   pause() {
     clearInterval(this.interval);
-    this.setState({paused: true});
   },
 
 
   componentDidMount() {
+    this.interval = null;
     this.play();
   },
 
@@ -70,7 +70,7 @@ module.exports = React.createClass({
     props = {
       className: classSet({
         [this.props.className]: true,
-        paused: this.state.paused
+        paused: !this.interval
       })
     };
 
