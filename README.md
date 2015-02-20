@@ -4,15 +4,29 @@ react-class-shifter
 A React component that facilitates animations by shifting classes around.
 
 
+## Usage
+
+Render the component with children:
+
 ```jsx
 React.render((
   <ClassShifter>
-    <div key="hey">hey there</div>
-    <div key="hi">hi there</div>
-    <div key="ho">ho there</div>
+    <div key="1">slide 1</div>
+    <div key="2">slide 2</div>
+    <div key="3">slide 3</div>
   </ClassShifter>
-), node);
+), sliderNode);
 ```
+
+The `.active` class will be shifted from one element to the next:
+
+<img src="react-class-shifter.gif" alt="react-class-shifter"/>
+
+
+## Options
+
+You can control the speed with `speed={2000}` and disable pausing on hover (on
+by default) with `pauseOnHover={false}`.
 
 
 ## Todo:
