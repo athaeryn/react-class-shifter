@@ -1,10 +1,64 @@
 <!doctype html>
 <html>
   <head>
+    <title>react-class-shifter</title>
+
+<style id="styles">
+#slider {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  top: 140px;
+  opacity: 0;
+  transition: all .5s ease;
+}
+.slide.active {
+  top: 60px;
+  opacity: 1;
+}
+</style>
+
+    <style>
+      body {
+        font-family:  "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 300;
+        text-align: center;
+      }
+      #slider {
+        background: tomato;
+        color: white;
+        font-size: 3rem;
+      }
+      .slide {
+        width: 100%;
+        -webkit-transition: all .5s ease;
+           -moz-transition: all .5s ease;
+             -o-transition: all .5s ease;
+      }
+      pre {
+        display: inline-block;
+        margin: 8px 0;
+        padding: 1rem 2rem 2rem;
+        font-size: 1.2rem;
+        text-align: left;
+        background: #eee;
+        color: #444;
+      }
+    </style>
   </head>
   <body>
     <div id="slider"></div>
-
     <script src="bundle.js"></script>
+    <script>
+      (function() {
+        var styles = document.getElementById("styles").innerHTML;
+        var pre = document.createElement("pre");
+        pre.innerHTML = styles;
+        document.body.appendChild(pre);
+      })();
+    </script>
   </body>
 </html>
