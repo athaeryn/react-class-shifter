@@ -15,16 +15,27 @@ module.exports = React.createClass({
     return {
       interval: null,
       count: this.props.children.length,
-      index: 0
+      index: 0,
+      paused: false
     };
   },
 
-  componentDidMount() {
+  play() {
     this.interval = setInterval(this.advance, this.props.speed);
+    this.setState({paused: false});
+  },
+
+  pause() {
+    clearInterval(this.interval);
+    this.setState({paused: true});
+  },
+
+  componentDidMount() {
+    this.play();
   },
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    this.pause();
   },
 
   advance() {
@@ -36,7 +47,9 @@ module.exports = React.createClass({
   },
 
   render() {
-    var children = this.props.children.map((child, index) => {
+    var children, classes;
+
+    children = this.props.children.map((child, index) => {
       var props = {
         // Maintain child key
         key: child.key,
@@ -45,8 +58,19 @@ module.exports = React.createClass({
       return cloneWithProps(child, props);
     });
 
+    classes = classSet({
+      [this.props.className]: true,
+      paused: this.state.paused
+    });
+
     return (
-      <div className={this.props.className}>{children}</div>
+      <div
+        className={classes}
+        onMouseEnter={this.pause}
+        onMouseLeave={this.play}
+      >
+        {children}
+      </div>
     );
   }
 });

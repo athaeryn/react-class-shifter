@@ -17,6 +17,5 @@ React.render((
 
 ## Todo:
 
-- Pause on hover
 - .prev and .next classes
 - .before and .after?

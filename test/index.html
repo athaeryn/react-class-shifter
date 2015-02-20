@@ -4,11 +4,12 @@
     <title>react-class-shifter</title>
 
 <style id="styles">
-#slider {
+.class-shifter {
   position: relative;
   height: 160px;
   overflow: hidden;
 }
+
 .slide {
   position: absolute;
   top: 140px;
@@ -27,17 +28,31 @@
         font-weight: 300;
         text-align: center;
       }
-      #slider {
-        background: tomato;
+
+      .class-shifter {
+        background-color: tomato;
         color: white;
         font-size: 3rem;
+        transition: background-color .3s ease;
       }
+      .class-shifter.paused {
+        background-color: grey;
+      }
+      .class-shifter.paused:after {
+        content: "(paused)";
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: .8rem;
+      }
+
       .slide {
         width: 100%;
         -webkit-transition: all .5s ease;
            -moz-transition: all .5s ease;
              -o-transition: all .5s ease;
       }
+
       pre {
         display: inline-block;
         margin: 8px 0;
