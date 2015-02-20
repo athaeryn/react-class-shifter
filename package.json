@@ -1,0 +1,23 @@
+{
+  "name": "react-class-shifter",
+  "version": "1.0.0",
+  "description": "A React component to create class-based animations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/athaeryn/react-class-shifter"
+  },
+  "keywords": [
+    "react",
+    "react-component"
+  ],
+  "author": "Mike Anderson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/athaeryn/react-class-shifter/issues"
+  },
+  "homepage": "https://github.com/athaeryn/react-class-shifter"
+}
