@@ -17,8 +17,7 @@ module.exports = React.createClass({
   getInitialState() {
     return {
       count: this.props.children.length,
-      index: 0,
-      paused: false
+      index: 0
     };
   },
 
@@ -32,6 +31,7 @@ module.exports = React.createClass({
 
   pause() {
     clearInterval(this.interval);
+    this.interval = null;
   },
 
 
@@ -68,10 +68,7 @@ module.exports = React.createClass({
     });
 
     props = {
-      className: classSet({
-        [this.props.className]: true,
-        paused: !this.interval
-      })
+      className: this.props.className
     };
 
     if (this.props.pauseOnHover) {
