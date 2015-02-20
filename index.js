@@ -3,13 +3,16 @@ var React = require("react"),
     cloneWithProps = addons.cloneWithProps,
     classSet = addons.classSet;
 
+
 module.exports = React.createClass({
   getDefaultProps() {
     return {
       speed: 1000,
-      className: "class-shifter"
+      className: "class-shifter",
+      pauseOnHover: true
     };
   },
+
 
   getInitialState() {
     return {
@@ -20,23 +23,28 @@ module.exports = React.createClass({
     };
   },
 
+
   play() {
     this.interval = setInterval(this.advance, this.props.speed);
     this.setState({paused: false});
   },
+
 
   pause() {
     clearInterval(this.interval);
     this.setState({paused: true});
   },
 
+
   componentDidMount() {
     this.play();
   },
 
+
   componentWillUnmount() {
     this.pause();
   },
+
 
   advance() {
     var nextIndex = this.state.index + 1;
@@ -46,8 +54,9 @@ module.exports = React.createClass({
     this.setState({index: nextIndex});
   },
 
+
   render() {
-    var children, classes;
+    var children, props;
 
     children = this.props.children.map((child, index) => {
       var props = {
@@ -58,19 +67,18 @@ module.exports = React.createClass({
       return cloneWithProps(child, props);
     });
 
-    classes = classSet({
-      [this.props.className]: true,
-      paused: this.state.paused
-    });
+    props = {
+      className: classSet({
+        [this.props.className]: true,
+        paused: this.state.paused
+      })
+    };
 
-    return (
-      <div
-        className={classes}
-        onMouseEnter={this.pause}
-        onMouseLeave={this.play}
-      >
-        {children}
-      </div>
-    );
+    if (this.props.pauseOnHover) {
+      props.onMouseEnter = this.pause;
+      props.onMouseLeave = this.play;
+    }
+
+    return <div {...props}>{children}</div>;
   }
 });

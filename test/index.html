@@ -2,26 +2,6 @@
 <html>
   <head>
     <title>react-class-shifter</title>
-
-<style id="styles">
-.class-shifter {
-  position: relative;
-  height: 160px;
-  overflow: hidden;
-}
-
-.slide {
-  position: absolute;
-  top: 140px;
-  opacity: 0;
-  transition: all .5s ease;
-}
-.slide.active {
-  top: 60px;
-  opacity: 1;
-}
-</style>
-
     <style>
       body {
         font-family:  "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -63,13 +43,32 @@
         color: #444;
       }
     </style>
+
+<style id="display-styles">
+.class-shifter {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 140px;
+  opacity: 0;
+  transition: all .5s ease;
+}
+.slide.active {
+  top: 60px;
+  opacity: 1;
+}
+</style>
   </head>
   <body>
     <div id="slider"></div>
     <script src="bundle.js"></script>
     <script>
       (function() {
-        var styles = document.getElementById("styles").innerHTML;
+        var styles = document.getElementById("display-styles").innerHTML;
         var pre = document.createElement("pre");
         pre.innerHTML = styles;
         document.body.appendChild(pre);
