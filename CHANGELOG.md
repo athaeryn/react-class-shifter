@@ -1,10 +1,13 @@
 # react-class-shifter changelog
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [unpublished]
+## [1.1.0] - 2015-02-23
+
+- Add .prev and .next classes
+
+## [1.0.3] - 2015-02-20
 
 - Remove .paused class
-- Add .prev and .next classes
 
 ## [1.0.2] - 2015-02-20
 
