@@ -4,6 +4,16 @@ var React = require("react"),
     classSet = addons.classSet;
 
 
+function getNext() {
+  return (this.state.index + 2) % this.state.count;
+}
+
+
+function getPrev() {
+  return this.state.index % this.state.count;
+}
+
+
 module.exports = React.createClass({
   getDefaultProps() {
     return {
@@ -15,9 +25,13 @@ module.exports = React.createClass({
 
 
   getInitialState() {
+    const count = this.props.children.length,
+          ctx = { state: { index: -1, count }};
     return {
-      count: this.props.children.length,
-      index: 0
+      count,
+      index: 0,
+      next: getNext.call(ctx),
+      prev: getPrev.call(ctx)
     };
   },
 
@@ -48,10 +62,14 @@ module.exports = React.createClass({
 
   advance() {
     var nextIndex = this.state.index + 1;
-        if (nextIndex >= this.state.count) {
-          nextIndex = 0;
-        }
-    this.setState({index: nextIndex});
+    if (nextIndex >= this.state.count) {
+      nextIndex = 0;
+    }
+    this.setState({
+      index: nextIndex,
+      next: getNext.call(this),
+      prev: getPrev.call(this)
+    });
   },
 
 
@@ -62,7 +80,11 @@ module.exports = React.createClass({
       var props = {
         // Maintain child key
         key: child.key,
-        className: classSet({active: this.state.index == index})
+        className: classSet({
+          active: this.state.index == index,
+          next:   this.state.next  == index,
+          prev:   this.state.prev  == index
+        })
       };
       return cloneWithProps(child, props);
     });

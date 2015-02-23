@@ -13,14 +13,18 @@
         background-color: tomato;
         color: white;
         font-size: 3rem;
+        padding: 1em 0 .75em;
         transition: background-color .3s ease;
+        display: table;
+        width: 100%;
       }
 
       .slide {
-        width: 100%;
-        -webkit-transition: all .5s ease;
-           -moz-transition: all .5s ease;
-             -o-transition: all .5s ease;
+        -webkit-transition: all .3s ease;
+           -moz-transition: all .3s ease;
+             -o-transition: all .3s ease;
+        display: table-cell;
+        table-layout: fixed;
       }
 
       pre {
@@ -37,19 +41,18 @@
 <style id="display-styles">
 .class-shifter {
   position: relative;
-  height: 160px;
-  overflow: hidden;
+  height: 300px;
 }
 
 .slide {
-  position: absolute;
-  top: 140px;
-  opacity: 0;
-  transition: all .5s ease;
+  transition: all .3s ease;
+  transform: translateY(180px);
 }
 .slide.active {
-  top: 60px;
-  opacity: 1;
+  transform: translateY(50px);
+}
+.slide.prev, .slide.next {
+  transform: translateY(140px);
 }
 </style>
   </head>
