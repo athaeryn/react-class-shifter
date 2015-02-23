@@ -27,9 +27,3 @@ The `.active` class will be shifted from one element to the next:
 
 You can control the speed with `speed={2000}` and disable pausing on hover (on
 by default) with `pauseOnHover={false}`.
-
-
-## Todo:
-
-- .prev and .next classes
-- .before and .after?
