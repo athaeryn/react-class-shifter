@@ -73,6 +73,13 @@ module.exports = React.createClass({
   },
 
 
+  componentDidUpdate() {
+    if (this.props.callback) {
+      this.props.callback(this.state.index);
+    }
+  },
+
+
   render() {
     var children, props;
 

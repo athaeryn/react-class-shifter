@@ -1,6 +1,10 @@
 # react-class-shifter changelog
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.2.0] - 2015-03-04
+
+- Add `callback` prop
+
 ## [1.1.1] - 2015-02-24
 
 - Remove browserify as a dependency
